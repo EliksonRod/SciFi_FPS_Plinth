@@ -18,6 +18,8 @@ namespace Akila.FPSFramework
         // Toggle for leaning functionality
         public bool toggleLean = false;
 
+        public bool toggleSprint = false;
+
         // Event triggered when leaning right
         public Action onLeanRight;
 
@@ -194,8 +196,25 @@ namespace Akila.FPSFramework
         protected void AddInputListeners()
         {
             // Handle sprint input
-            controls.Player.Sprint.performed += context => rawSprintInput = true;
-            controls.Player.Sprint.canceled += context => rawSprintInput = false;
+            //controls.Player.Sprint.performed += context => rawSprintInput = true;
+            //controls.Player.Sprint.canceled += context => rawSprintInput = false;
+
+            // Handle tactical sprint input
+            //controls.Player.TacticalSprint.performed += context => rawTacticalSprintInput = true;
+            //controls.Player.TacticalSprint.canceled += context => rawTacticalSprintInput = false;
+
+
+            // Handle sprint input
+            controls.Player.Sprint.performed += context =>
+            {
+                if (!toggleSprint) rawSprintInput = true;
+            };
+            controls.Player.Sprint.canceled += context =>
+            {
+                rawSprintInput = toggleSprint ? !rawSprintInput : false;
+            };
+
+
 
             // Handle crouch input
             controls.Player.Crouch.performed += context =>

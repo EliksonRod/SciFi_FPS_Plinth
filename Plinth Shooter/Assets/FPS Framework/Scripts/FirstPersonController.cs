@@ -178,7 +178,7 @@ namespace Akila.FPSFramework
                 slideVelocity = Vector3.zero;
             //update desiredVelocity in order to normlize it and smooth the movement
             desiredVelocity = slideVelocity + Vector3.SmoothDamp(desiredVelocity,
-                (SlopeDirection() * CharacterInput.moveInput.y + Orientation.right * CharacterInput.moveInput.x).normalized * speed, ref desiredVelocityRef, acceleration);
+                (SlopeDirection() * CharacterInput.moveInput.y + Orientation.right * CharacterInput.moveInput.x).normalized * (speed), ref desiredVelocityRef, acceleration);
 
             //set controller height according to if player is crouching
             controller.height = CharacterInput.crouchInput ?
@@ -357,9 +357,13 @@ namespace Akila.FPSFramework
 
         public virtual void SetSpeed(float walk, float sprint, float tacSprint)
         {
-            outputWalkSpeed = walk;
-            outputSprintSpeed = sprint;
-            outputTacticalSprintSpeed = tacSprint;
+
+            //outputWalkSpeed = walk;
+            //outputSprintSpeed = sprint;
+            //outputTacticalSprintSpeed = tacSprint;
+            walk = outputWalkSpeed;
+            sprint = outputSprintSpeed;
+            tacSprint = outputTacticalSprintSpeed;
         }
 
         public virtual void ResetSpeed()

@@ -47,7 +47,8 @@ namespace Akila.FPSFramework
                 if (interactKeyText) interactKeyText.SetText(controls.Player.Intract.GetBindingDisplayString());
                 if(interactActionText) interactActionText.SetText(interactable.GetInteractionName());
 
-                if(controls.Player.Intract.triggered) interactable.Interact(this);
+                //If the interact button is pressed
+                if (controls.Player.Intract.triggered) interactable.Interact(this);
             }
         }
 

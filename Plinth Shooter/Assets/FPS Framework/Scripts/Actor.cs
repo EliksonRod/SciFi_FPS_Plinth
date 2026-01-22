@@ -13,7 +13,7 @@ namespace Akila.FPSFramework
         public string actorName;
 
         /// <summary>
-        /// The actor manager for this actor.The actor manager is repsonsible for handling respawning.
+        /// The actor manager for this actor.The actor manager is responsible for handling respawning.
         /// </summary>
         public ActorManager actorManager { get; set; }
         /// <summary>
@@ -79,8 +79,13 @@ namespace Akila.FPSFramework
         /// <param name="group">The part which has been hit on kill. This is used to tell the kill feed if it's a headshot or not.</param>
         public void ConfirmKill(Actor victim, IDamageableGroup group)
         {
-            if(actorManager)
-            actorManager.kills++;
+            if (actorManager)
+            {
+                actorManager.kills++;
+                actorManager.PointManager(130);
+
+            }
+            
 
             if (isLocallyMine)
             {

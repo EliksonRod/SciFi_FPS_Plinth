@@ -360,7 +360,7 @@ namespace Akila.FPSFramework
                     data.afterShotReliefTime = 1;
                     data.shotCount = 1;
 
-                    data.magazineCapacity = 12;
+                    data.magazineCapacity = 8;
                     data.reserve = 12;
                     data.automaticReload = false;
 

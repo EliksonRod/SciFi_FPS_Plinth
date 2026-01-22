@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System.Threading.Tasks;
 using static UnityEngine.GraphicsBuffer;
+using Unity.VisualScripting;
 
 namespace Akila.FPSFramework
 {
@@ -30,6 +31,12 @@ namespace Akila.FPSFramework
 
         private void LookAndPing()
         {
+            if (pings.Count >= maxPings)
+            {
+                Destroy(pings[0].gameObject);
+                pings.RemoveAt(0);
+            }
+
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range, pingableLayers))
             {
                 Ping newPing = Instantiate(ping, canvas.transform);
@@ -41,6 +48,8 @@ namespace Akila.FPSFramework
                 
                 OnPinged(newPing);
             }
+            //Kills ping after time
+            StartCoroutine(RemovePingAfterTime(pings[pings.Count - 1], pingLifetime));
         }
 
         public virtual void OnPinged(Ping ping)
@@ -51,6 +60,14 @@ namespace Akila.FPSFramework
         public virtual void PlayPingSoundEffect(Ping ping)
         {
             pingAudio.PlayOneShot(ping.soundEffect);
+        }
+
+        IEnumerator RemovePingAfterTime(Ping ping, float time)
+        {
+            yield return new WaitForSeconds(time);
+            if (!pings.Contains(ping)) yield break;
+            pings.Remove(ping);
+            Destroy(ping.gameObject);
         }
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +8,9 @@ using UnityEditor;
 
 namespace Akila.FPSFramework
 {
-    [AddComponentMenu("Akila/FPS Framework/Player/Pickable")]
-    public class Pickable : MonoBehaviour, IInteractable
+    [AddComponentMenu("Akila/FPS Framework/Player/Wallbuy")]
+    public class Wallbuy : MonoBehaviour, IInteractable
     {
-        //Is this a wallbuy item
-        [SerializeField] bool IsWallbuy = true;
-        //Price of the wallbuy
-        public int wallbuyPrice = 4500;
-        //If the player already has the weapon, they can buy ammo only
-        [SerializeField] bool HasWeapon = false;
-
-
         public PickableType type;
         public Item item;
         public AmmoProfileData ammoProfile;
@@ -26,8 +18,8 @@ namespace Akila.FPSFramework
         public string interactionName = "Take";
         public string displayName = "Item";
         public int ammoAmount = 30;
-        public ActorManager actorManager;
 
+        [SerializeField] int WallbuyCost;
 
         private FirearmAttachmentsManager firearmAttachmentsManager;
 
@@ -53,14 +45,6 @@ namespace Akila.FPSFramework
                 case PickableType.Ammo:
                     InteractWithAmmo(source);
                     break;
-                case PickableType.Wallbuy:
-                    if (actorManager.currentMoneyAmount >= wallbuyPrice)
-                    {
-                        InteractWithItem(source);
-                        actorManager.PointManager(-wallbuyPrice);
-                    }
-                        
-                    break;
             }
 
             //Play pickup animation
@@ -85,10 +69,6 @@ namespace Akila.FPSFramework
 
                 case PickableType.Ammo:
                     info = $"{displayName} {ammoAmount}X - {type}";
-                    break;
-
-                case PickableType.Wallbuy:
-                    info = $"{displayName} {ammoAmount}X - {wallbuyPrice}";
                     break;
             }
 
@@ -164,20 +144,15 @@ namespace Akila.FPSFramework
             {
                 pickupable.item = EditorGUILayout.ObjectField(new GUIContent("Item", "The item going to be equiped"), pickupable.item, typeof(Item), true) as Item;
             }
-            if(pickupable.type == PickableType.Ammo)
+            if (pickupable.type == PickableType.Ammo)
             {
                 pickupable.ammoProfile = EditorGUILayout.ObjectField("Ammo Profile", pickupable.ammoProfile, typeof(AmmoProfileData), true) as AmmoProfileData;
             }
-            //Interact Sound field
             pickupable.interactSound = EditorGUILayout.ObjectField("Interaction Sound", pickupable.interactSound, typeof(AudioProfile), true) as AudioProfile;
-            //Actor Manager field - to access player money
-            pickupable.actorManager = EditorGUILayout.ObjectField("Actor Manager", pickupable.actorManager, typeof(ActorManager), true) as ActorManager;
-            //Interaction Name and Display Name fields
             pickupable.interactionName = EditorGUILayout.TextField("Interaction Name", pickupable.interactionName);
             pickupable.displayName = EditorGUILayout.TextField("Display Name", pickupable.displayName);
 
-            //Set wallbuy price and ammo amount only if wallbuy or ammo type is selected
-            pickupable.wallbuyPrice = EditorGUILayout.IntField(new GUIContent("Wallbuy Price", "The amount of ammo in weapon or the ammo item"), pickupable.wallbuyPrice);
+
             pickupable.ammoAmount = EditorGUILayout.IntField(new GUIContent("Ammo Amount", "The amount of ammo in weapon or the ammo item"), pickupable.ammoAmount);
 
             if (EditorGUI.EndChangeCheck()) EditorUtility.SetDirty(target);
@@ -190,6 +165,5 @@ namespace Akila.FPSFramework
     {
         Item = 0,
         Ammo = 1,
-        Wallbuy = 2
     }
-}
+}*/

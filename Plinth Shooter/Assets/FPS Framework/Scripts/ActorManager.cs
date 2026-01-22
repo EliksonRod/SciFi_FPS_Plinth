@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Akila.FPSFramework
@@ -32,12 +33,17 @@ namespace Akila.FPSFramework
         public bool randomizeName;
         public List<string> randomNames = new List<string>(1);
 
+        public TextMeshProUGUI MoneyDisplay;
 
         [Header("Statics")]
         [Tooltip("How much the actor has killed")]
         public int kills;
         [Tooltip("How much the actor got killed")]
         public int deaths;
+        [Tooltip("How much money the actor currently has")]
+        public int currentMoneyAmount = 500;
+        [Tooltip("How much points the actor gained in total")]
+        public int totalPoints;
 
         public bool isLocallyMine
         {
@@ -46,6 +52,24 @@ namespace Akila.FPSFramework
                 return actor?.characterManager?.character != null;
             }
         }
+
+        public void PointManager(int points)
+        {
+            currentMoneyAmount += points;
+            totalPoints += Mathf.Abs(points);
+        }
+
+        void UpdateMoneyUI()
+        {
+            if (MoneyDisplay != null)
+                MoneyDisplay.text = currentMoneyAmount.ToString();
+        }
+
+        void Update()
+        {
+            UpdateMoneyUI();
+        }
+        
 
         /// <summary>
         /// name of the actor

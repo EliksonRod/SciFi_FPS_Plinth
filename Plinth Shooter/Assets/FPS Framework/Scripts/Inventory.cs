@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using TMPro;
 
 namespace Akila.FPSFramework
 {
@@ -69,6 +70,8 @@ inputActions.Player.NextItem.performed += context => currentItemIndex++;
                 Switch(0);
             }
         }
+        
+
 
         protected virtual void Update()
         {
