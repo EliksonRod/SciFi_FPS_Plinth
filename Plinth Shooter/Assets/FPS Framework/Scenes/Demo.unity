@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135.5, y: 39.8}
+  m_AnchoredPosition: {x: 135.5, y: 39.80005}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143044485
@@ -6159,9 +6159,9 @@ Transform:
   - {fileID: 5899641737317878885}
   - {fileID: 3266173278766608845}
   - {fileID: 2044694924596660702}
+  - {fileID: 8065355005638936111}
   - {fileID: 3038335592789038922}
   - {fileID: 913921990613531068}
-  - {fileID: 8065355005638936111}
   - {fileID: 1826214783969571332}
   - {fileID: 5899641737524497347}
   - {fileID: 3266173279200255731}
@@ -67766,7 +67766,7 @@ MonoBehaviour:
   item: {fileID: 4733035344019299247, guid: 2c6fcc7a75e3b6541a71cc927bb824c7, type: 3}
   ammoProfile: {fileID: 0}
   interactSound: {fileID: 11400000, guid: c8171d51356d78342bfc6fbe16099e90, type: 2}
-  interactionName: Take
+  interactionName: Buy
   displayName: Outlaw
   ammoAmount: 5
   actorManager: {fileID: 1709716021}
@@ -222391,7 +222391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6922191095916386353
 GameObject:
   m_ObjectHideFlags: 0
@@ -260998,7 +260998,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!114 &8065355005418450925
 MonoBehaviour:
@@ -261013,16 +261013,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsWallbuy: 1
-  wallbuyPrice: 4500
+  wallbuyPrice: 1250
   HasWeapon: 0
-  type: 0
+  type: 2
   item: {fileID: 7072929733126486059, guid: bbabec215dfafb844b5dfd983988a7d0, type: 3}
   ammoProfile: {fileID: 0}
   interactSound: {fileID: 11400000, guid: c8171d51356d78342bfc6fbe16099e90, type: 2}
-  interactionName: Take
-  displayName: Assut Rifle_1
+  interactionName: Buy
+  displayName: M5A2
   ammoAmount: 30
-  actorManager: {fileID: 0}
+  actorManager: {fileID: 1709716021}
 --- !u!114 &8065355005418450926
 MonoBehaviour:
   m_ObjectHideFlags: 0
